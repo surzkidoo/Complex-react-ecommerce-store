@@ -1,7 +1,7 @@
-import { uuidV4 } from "mongodb/lib/core/utils";
 import React, { useState, createContext, useEffect } from "react";
 import { products, categories, ads, brands, users } from "./data";
 import { FindOneAny } from "./_services/productHelper";
+import { FaUpRightAndDownLeftFromCenter } from "react-icons/fa6";
 export const ProductContext = createContext();
 
 export const Productprovider = (props) => {
@@ -68,7 +68,7 @@ export const Productprovider = (props) => {
     let prod = FindOneAny(product, id, "product_id");
     setCart((prev) => [
       ...prev,
-      { quantity: quantity, product_id: prod.product_id, cart_id: uuidV4() },
+      { quantity: quantity, product_id: prod.product_id, cart_id: Math.random() },
     ]);
     return true;
   };
