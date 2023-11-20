@@ -18,11 +18,17 @@ body {
   --secondary: rgb(255, 255, 255);
   --second: rgba(1, 1, 7, 0.913);
   --black: #323232;
-  --shadow-xs: 0.0325em 0.0325em 0.0325em rgba(104, 104, 104, 0.019);
-  --shadow-sm: 3px 1px 4px rgba(104, 104, 104, 0.174);
-  --shadow-md: 3px 1px 8px rgba(104, 104, 104, 0.315);
+  --shadow-xs: 0.0525em 0.0525em 0.0225em rgba(104, 104, 104, 0.119);
+  --shadow-sm: 3px 1px 4px rgba(104, 104, 104, 0.174) , 3px 1px 4px rgba(104, 104, 104, 0.174);
+  --shadow-md: 3px 1px 8px rgba(104, 104, 104, 0.115), -3px -1px 8px rgba(104, 104, 104, 0.115);
   --shadow-lg: 3px 4px 10px rgba(104, 104, 104, 0.616);
-  --fant-dark: rgb(1, 1, 7);
+  --fant-dark: rgba(0, 0, 0, 0.734);
+}
+.icon-color{
+  color: var(--fant-dark);
+}
+.icon-color:hover{
+  color: inherit;
 }
 .loader-container {
   display: flex;
@@ -36,7 +42,57 @@ body {
   left: 0;
   background-color: rgb(250, 10, 122);
 }
+.alert-error{
+  color: red;
+  border:  3px solid red;
+}
 
+.big-logo{
+  height: 140px;
+  width: 140px;
+}
+
+.alert-success{
+  color: rgb(0, 255, 21);
+  border:  3px solid rgb(0, 255, 89);
+}
+.alert-container{
+  position: fixed;
+  top: 10%;
+  right: 50px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.alert{
+  display: flex;
+  width: 300px;
+  background-color: var(--secondary);
+  gap: 10px;
+  padding: 15px 15px;
+  align-items: center;
+  border-radius: 10px;
+  position: relative;
+}
+.alert-close{
+  position: absolute;
+  right: 10px;
+  font-size: 14px;
+  top: 8px;
+  color: var(--second);
+}
+.alert-text{
+  font-size: 14px;
+  color: inherit;
+}
+.alert-icon{
+  min-width: 38px;
+  font-size: 38px;
+  color: inherit;
+  
+}
 .loader-img {
   height: 55px;
   width: 55px;
@@ -94,9 +150,10 @@ body {
   justify-content: space-between;
 }
 .logo {
-  height: 30px;
-  width: 30px;
+  height: 29px;
+    width: 20px;
   display: none;
+  fill: var(--primary);
 }
 .brand-name {
   text-decoration: none;
@@ -151,13 +208,18 @@ body {
   flex-direction: column;
   gap: 10px;
   box-shadow: var(--shadow-md);
-  top: 40px;
+  top: 45px;
 }
 
 .suggestion-item {
-  font-size: 15px;
+  font-size: 13px;
   display: flex;
   justify-content: space-between;
+  color: var(--fant-dark);
+  cursor: pointer;
+}
+.suggestion-item:hover{
+  color: var(--second);
 }
 .searchf {
   width: 510px;
@@ -165,16 +227,18 @@ body {
   font-size: 13px;
   outline: none;
   border: none;
+  display: flex;
+  align-items: center;
 
 }
 
 .searchf::placeholder {
-  color: var(--second);
+  color: var(--fant-dark);
   font-size: 13px;
 }
 
 .searchbtn {
-  width: 60px;
+  width: 40px;
   height: 100%;
   outline: none;
   font-size: 12px;
@@ -183,6 +247,10 @@ body {
   color: var(--primary);
   text-transform: uppercase;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .menu-container {
@@ -210,7 +278,8 @@ body {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: var(--second)
+  color: var(--second);
+cursor: pointer;
   
 }
 
@@ -231,6 +300,10 @@ body {
   width: 100%;
   height: 100%;
   font-size: 13px;
+  cursor: pointer;
+}
+.popup-menu-item:hover{
+  color: var(--primary);
 }
 .new-test {
   height: 65px;
@@ -271,16 +344,27 @@ body {
 }
 
 .cartNum {
-  background-color: var(--second);
+  background-color: rgb(239, 190, 13);
   color: white;
-  padding: 2px;
-  margin: 0 2px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  display: flex;
   font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5px;
+  margin-left: -5px;
+
+
 }
 
 .cart-link {
   color: inherit;
   text-decoration: none;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 .hero-container {
   margin: 10px 0px;
@@ -314,10 +398,13 @@ body {
   height: 100%;
   width: 100%;
 }
-
+.menu-toggler{
+  display: block;
+  margin-right: 10px;
+}
 .sidebar {
   background-color: white;
-  box-shadow: var(--shadow-sm);
+  border: 2px solid rgb(228, 228, 228);
   position: fixed;
   padding: 8px 0px;
   display: flex;
@@ -349,13 +436,16 @@ body {
   flex-direction: column;
   justify-content: start;
   height: 100%;
+ 
 }
 .category-link {
   padding: 10px 20px;
-  display: block;
   font-size: 13px;
   text-decoration: none;
-  color: var(--second);
+  color: var(--fant-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .nvg-category-item:hover > .more-category-container {
   display: none;
@@ -395,7 +485,7 @@ body {
 }
 
 .category-container a:hover {
-  color: var(--primary);
+  background-color:   rgba(250, 10, 122, 0.102);
 }
 
 .main-ad-image {
@@ -460,7 +550,9 @@ body {
   max-width: 100%;
   background-color: white;
   flex-wrap: nowrap;
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
 }
 
 .brand {
@@ -539,8 +631,8 @@ body {
 }
 .nvg-right-product {
   background-color: rgb(255, 255, 255);
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
   display: flex;
   border-radius: 25px;
   align-items: center;
@@ -596,6 +688,10 @@ body {
   box-shadow: var(--shadow-md);
   font-size: 13px;
   text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 .card-add-to-cart-btn:hover {
   background-color: var(--primary);
@@ -605,6 +701,10 @@ body {
   border: none;
   outline: none;
   border: 1px solid var(--primary);
+}
+.already-in-cart{
+  background-color: var(--primary) !important;
+  color: var(--secondary) !important;
 }
 .product-image {
   width: 100% !important;
@@ -864,7 +964,7 @@ body {
 }
 .tag-line-container div {
   margin: 4px;
-  font-size: 10px;
+  font-size: 12px;
   cursor: pointer;
 }
 .tag-line-container div:hover {
@@ -987,6 +1087,7 @@ body {
 .product-detail-name {
   font-size: 16px;
   font-weight: bold;
+  color: var(--second);
 }
 
 .review-container {
@@ -1020,6 +1121,7 @@ body {
 .price-label {
   font-size: 13px;
   font-weight: bold;
+  color: var(--second);
 }
 .product-detailed-prices {
   display: flex;
@@ -1105,15 +1207,44 @@ body {
 .product-desc-header {
   font-size: 13px;
   font-weight: bold;
+  color: var(--second);
 }
 
 .product-desc-content {
   padding: 10px;
   font-size: 13px;
 }
-
+.product-desc-content li{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 5px 0;
+}
 .qauntity-left {
   font-size: 10px;
+}
+.welcome-logo-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  
+}
+
+
+
+.welcome-logo-text{
+  color: var(--secondary);
+  font-size: 20px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.welcome-logo{
+  height: 50px;
+}
+.welcome-desc{
+  font-size: 16px;
+  color: var(--primary);
+  margin-top: 15px;
 }
 
 .add-quantity-container {
@@ -1165,6 +1296,10 @@ body {
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.283);
   text-transform: uppercase;
   font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .add-review-container {
@@ -1196,7 +1331,6 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid rgb(217, 217, 217);
   margin: 4px;
 }
 
@@ -1207,10 +1341,10 @@ body {
 }
 .review-image-container {
   height: 70px;
-  width: 70px;
+  min-width: 70px;
   border-radius: 35px;
   display: flex;
-  align-items: center;
+  align-self: flex-start;
   justify-content: center;
 }
 
@@ -1262,7 +1396,7 @@ body {
   flex-direction: column;
   background-color: white;
   width: 100%;
-  padding: 20px;
+  padding: 0px;
 }
 .cart-header {
   font-size: 24px;
@@ -1277,6 +1411,11 @@ body {
 
 .cart-item-container {
   margin-top: 30px;
+  border: 2px solid rgb(228, 228, 228);
+  padding: 10px;
+}
+.cart-item-container:hover{
+  box-shadow: var(--shadow-md);
 }
 .cart-image-container {
   height: 110px;
@@ -1299,6 +1438,7 @@ body {
 .cart-name {
   font-size: 15px;
   align-self: flex-start;
+  color: var(--second);
 }
 .cart-price-container {
 }
@@ -1306,6 +1446,7 @@ body {
 .cart-price {
   font-size: 16px;
   font-weight: bold;
+  color: var(--second);
 }
 
 .discount-container {
@@ -1326,6 +1467,7 @@ body {
 .cart-discount {
   text-decoration: line-through;
   font-size: 13px;
+  color: var(--fant-dark);
 }
 
 .cart-product-name-price {
@@ -1370,9 +1512,9 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 40px;
-  width: 0px;
   font-weight: bold;
   font-size: 15px;
+  background-color: white;
 }
 
 .remove-container:hover {
@@ -1424,7 +1566,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: var(--shadow-sm);
+  border: 2px solid rgb(228, 228, 228);
+  margin-top: 10px;
 }
 .summary-label-price {
   justify-content: space-between;
@@ -1504,6 +1647,7 @@ body {
   border: none;
   height: 40px;
   text-transform: uppercase;
+  gap: 10px;
 }
 
 .sub-category-container {
@@ -1612,6 +1756,9 @@ body {
 }
 .brand-checklist-name {
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 .checklist-bg {
   display: flex;
@@ -1764,7 +1911,7 @@ body {
 
 .signup-page {
   width: 100%;
-  height: 100vh;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1772,16 +1919,17 @@ body {
 
 .signup-container {
   width: 100%;
-  height: 100vh;
+  height: 800px;
   display: flex;
 }
 
 .signup-form-container {
   width: 100%;
+  height: 100%;
   background-color: var(--primary);
   display: flex;
-  align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .signup-form-group {
@@ -1792,8 +1940,8 @@ body {
 
 .signup-form {
   background-color: white;
-  width: 100%;
   padding: 10px;
+  margin: 0 10px;
 }
 .signup-form-group label {
   font-size: 13px;
@@ -1802,6 +1950,8 @@ body {
 .display-welcome-container {
   width: 50%;
   display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .signup-title {
@@ -1971,6 +2121,10 @@ body {
   color: white;
   font-size: 13px;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .order-summary-container {
@@ -1981,7 +2135,7 @@ body {
   gap: 10px;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-sm);
+  border: 2px solid rgb(228, 228, 228);
 }
 .data-value-container {
   display: flex;
@@ -2053,6 +2207,12 @@ thead td {
   margin: 10px;
   background-color: white;
   border-radius: 20px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
 }
 
 .status-pending {
@@ -2108,10 +2268,13 @@ thead td {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 5px;
   }
   .logo {
-    height: 30px;
-    width: 30px;
+    height: 29px;
+    width: 20px;
+  display: block;
+  fill: var(--primary);
   }
   .brand-name {
     text-decoration: none;
@@ -2188,7 +2351,7 @@ thead td {
   }
 
   .searchbtn {
-    width: 60px;
+    width: 40px;
     height: 100%;
     outline: none;
     font-size: 12px;
@@ -2269,18 +2432,29 @@ thead td {
     position: absolute;
     padding: 10px;
     top: 100%;
+    box-shadow: var(--shadow-md);
   }
 
   .cartNum {
-    background-color: var(--second);
     color: white;
-    padding: 9px;
-    margin: 0 4px;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    display: flex;
+    font-size: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: -5px;
+    margin-left: -5px;
+
   }
 
   .cart-link {
     color: inherit;
     text-decoration: none;
+  display:flex;
+  align-items: center;
+  justify-content: center;
   }
   .hero-container {
     margin: 10px 0px;
@@ -2316,10 +2490,15 @@ thead td {
     width: 100%;
   }
 
+  .menu-toggler{
+    display: none;
+    
+  }
+
   .sidebar {
     width: 200px;
     background-color: white;
-    box-shadow: var(--shadow-sm);
+    border: 2px solid rgb(228, 228, 228);
     position: relative;
     padding: 8px 0px;
     display: block;
@@ -2342,13 +2521,12 @@ thead td {
     flex-direction: column;
     justify-content: start;
     height: 100%;
+    width: 400px;
   }
   .category-link {
     padding: 10px 20px;
-    display: block;
     font-size: 13px;
     text-decoration: none;
-    color: var(--second);
   }
   .nvg-category-item:hover > .more-category-container {
     display: flex;
@@ -2388,7 +2566,7 @@ thead td {
   }
 
   .category-container a:hover {
-    color: var(--primary);
+   
   }
 
   .main-ad-image {
@@ -2452,6 +2630,8 @@ thead td {
     align-items: center;
     max-width: 100%;
     background-color: white;
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
 
   .brand {
@@ -2530,8 +2710,8 @@ thead td {
   }
   .nvg-right-product {
     background-color: rgb(255, 255, 255);
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
     display: flex;
     border-radius: 25px;
     align-items: center;
@@ -2587,6 +2767,7 @@ thead td {
     box-shadow: var(--shadow-md);
     font-size: 13px;
     text-transform: capitalize;
+    
   }
   .card-add-to-cart-btn:hover {
     background-color: var(--primary);
@@ -2854,7 +3035,7 @@ thead td {
 
   .tag-line-container {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     color: rgb(70, 70, 70);
   }
   .tag-line-container div {
@@ -2876,7 +3057,7 @@ thead td {
     margin: 20px 0px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    gap: 60px;
     align-items: flex-start;
     flex-direction: row;
   }
@@ -2971,7 +3152,7 @@ thead td {
   }
   .product-detailed-container {
     width: 100%;
-    margin: 0px 60px;
+   
   }
 
   .product-detail-name {
@@ -3095,6 +3276,7 @@ thead td {
   .product-desc-header {
     font-size: 16px;
     font-weight: bold;
+    color: var(--second);
   }
 
   .product-desc-content {
@@ -3186,7 +3368,6 @@ thead td {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border: 1px solid rgb(217, 217, 217);
     margin: 4px;
   }
 
@@ -3200,7 +3381,7 @@ thead td {
     width: 70px;
     border-radius: 35px;
     display: flex;
-    align-items: center;
+    align-items:flex-start;
     justify-content: center;
   }
 
@@ -3356,9 +3537,9 @@ thead td {
     color: var(--second);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     height: 40px;
-    width: 0px;
+    width: auto;
     font-weight: bold;
     font-size: 15px;
   }
@@ -3412,7 +3593,7 @@ thead td {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: var(--shadow-sm);
+    border: 2px solid rgb(228, 228, 228);
   }
   .summary-label-price {
     justify-content: space-between;
@@ -3470,6 +3651,8 @@ thead td {
     display: block;
     position: initial;
     z-index: initial;
+    border: 2px solid rgb(228, 228, 228);
+
   }
   .open-filter-btn{
     display: none;
@@ -3701,6 +3884,8 @@ thead td {
     background-color: white;
     width: 930px;
     padding: 17px;
+    border: 2px solid rgb(228, 228, 228);
+
   }
 
   .filter-product-header-container {
@@ -3734,7 +3919,6 @@ thead td {
 
   .signup-page {
     width: 100%;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3742,7 +3926,6 @@ thead td {
 
   .signup-container {
     width: 100%;
-    height: 100vh;
     display: flex;
   }
 
@@ -3751,7 +3934,7 @@ thead td {
     background-color: var(--primary);
     display: flex;
     align-items: center;
-    justify-content: center;
+   
   }
 
   .signup-form-group {
@@ -3764,6 +3947,7 @@ thead td {
     background-color: white;
     width: 420px;
     padding: 30px;
+ 
   }
   .signup-form-group label {
     font-size: 13px;
@@ -3771,9 +3955,35 @@ thead td {
 
   .display-welcome-container {
     width: 50%;
-    display: block;
-  }
+    display: flex;
+    flex-direction: column;
 
+  }
+  .welcome-logo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+   
+  }
+  .logo-mobile{
+    display: none;
+  }
+  
+  .welcome-logo-text{
+    color: var(--secondary);
+    font-size: 20px;
+  }
+  .welcome-logo{
+    height: 60px;
+
+  }
+  .welcome-desc{
+    font-size: 16px;
+    color: var(--primary);
+    margin-top: 15px;
+  }
   .signup-title {
     font-size: 18px;
     text-align: center;
@@ -3952,7 +4162,7 @@ thead td {
     gap: 10px;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--shadow-sm);
+    border: 2px solid rgb(228, 228, 228);
   }
   .data-value-container {
     display: flex;

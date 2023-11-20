@@ -4,6 +4,7 @@ import SidebarCategory from "../Components/SidebarCategory";
 import axios from "axios";
 import CategorySection from "../Components/CategorySection";
 import { ProductContext } from "../productprovider";
+import { FaFilter, FaFilterCircleXmark } from "react-icons/fa6";
 
 const CategoryPage = () => {
   const { categorys } = useContext(ProductContext);
@@ -87,7 +88,7 @@ const CategoryPage = () => {
           className="open-filter-btn"
           onClick={() => setOpenFilter(!openFilter)}
         >
-          {openFilter ? "Close Filter" : "Filter"}
+          {!openFilter ? <><FaFilter size={18}/> Filter</> : <><FaFilterCircleXmark size={18}/>Close Filter</> }
         </button>
       </div>
     </div>

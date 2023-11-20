@@ -1,6 +1,10 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { ProductContext } from "../productprovider";
 import Loader from "./loader";
+import { AiFillHeart, AiOutlineArrowDown, AiOutlineArrowUp, AiOutlineHeart } from "react-icons/ai";
+import { BsCartDash, BsCartPlus, } from "react-icons/bs";
+import { UIcontext } from "../Context/UIcontext";
+import { Alert } from "./Alert";
 
 export default function ProductImage({
   product_image,
@@ -18,7 +22,7 @@ export default function ProductImage({
   const [showUpBtn, setShowUpBtn] = useState(false);
   const [showDownBtn, setShowDownBtn] = useState(false);
   const [showLoader,setShowLoader] = useState(false);
-
+  const {setAlertComponents} = useContext(UIcontext)
   useEffect(() => {
     product_image.length > 5 && setShowDownBtn(true);
     sc.current.scrollTop < 0 && setShowUpBtn(true);
@@ -32,9 +36,13 @@ export default function ProductImage({
       if (isAddedToCart) {
         removeCart(id);
         setIsAddedToCart(false);
+        let alert =<Alert type='success' message='Remove From Cart Succesfully' />
+       // setAlertComponents(prev=>[...prev,)
+
       } else {
         addToCart(id, quantity);
         setIsAddedToCart(true);
+        // setAlertComponents(prev=>[...prev,{type:'success',message:'Added To Cart Succesfully'}])
       }
     
   };
@@ -43,11 +51,9 @@ export default function ProductImage({
     if (isAddedToWishlist) {
       removeWishlist(id);
       setIsAddedToWishlist(false);
-      alert("remove");
     } else {
       addToWishlist(id, userId);
       setIsAddedToWishlist(true);
-      alert("added");
     }
   };
 
@@ -64,12 +70,13 @@ export default function ProductImage({
   };
 
   return showLoader ? <Loader/> :  (
+    
     <div className="side-product-container">
       <div className="product-image-container">
         <div className="slide-container" ref={sc}>
           {showUpBtn && (
             <div className="up-slide" onClick={handleTop}>
-              up
+              <AiOutlineArrowUp/>
             </div>
           )}
           {product_image.map((image, index) => (
@@ -83,14 +90,14 @@ export default function ProductImage({
           ))}
           {showDownBtn && (
             <div className="down-slide" onClick={handleDown}>
-              down
+             <AiOutlineArrowDown/>
             </div>
           )}
         </div>
         <div className="slide-display">
           <div className="like" onClick={() => handleAddtoWishlist(id, 1)}>
-            <div className={isAddedToWishlist && "active"}>
-            O
+            <div className={isAddedToWishlist ? "active" : undefined} style={{display:"flex",alignItems:"center",justifyContent:'center'}}>
+               {!isAddedToWishlist ? <AiOutlineHeart/>: <AiFillHeart/>}
             </div>
           </div>
           <img className="slide-image-display" alt="" src={"../" + product_image[seleted]} />
@@ -101,6 +108,7 @@ export default function ProductImage({
           className="product-add-to-cart-btn"
           onClick={() => handleAddtoCart(id, quantity)}
         >
+        <BsCartDash size={24}/>
           Remove From Cart
         </button>
       ) : (
@@ -108,6 +116,8 @@ export default function ProductImage({
           className="product-add-to-cart-btn"
           onClick={() => handleAddtoCart(id, quantity)}
         >
+                  <BsCartPlus size={24}/>
+
           Add To Cart
         </button>
       )}

@@ -1,5 +1,7 @@
 import React,{useState} from "react";
 import Loader from "./loader";
+import { FaDeleteLeft, FaMinus, FaNairaSign, FaPlus } from "react-icons/fa6";
+import { AiFillDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 const CartItem = ({ prod, cartdata,action,showLoader,setShowLoader }) => {
 
@@ -28,10 +30,10 @@ return showLoader ? <Loader/> : (
                   {prod.product_name}
                 </div>
                 <div className="cart-price-container">
-                  <div className="cart-price">₦{(cartdata.quantity*prod.product_price).toLocaleString()}</div>
+                  <div className="cart-price"><FaNairaSign/>{(cartdata.quantity*prod.product_price).toLocaleString()}</div>
                   <div className="discount-container">
                   <div className="discount-percentage">-{prod.product_discount}%</div>
-                    <div className="cart-discount">₦{(prod.product_discount_price - prod.product_price).toLocaleString()}</div>
+                    <div className="cart-discount"><FaNairaSign/>{(prod.product_discount_price - prod.product_price).toLocaleString()}</div>
                   
                   </div>
                 </div>
@@ -53,15 +55,12 @@ return showLoader ? <Loader/> : (
           </div>
         </div>
         <div className="cart-action-container">
-          <button className="remove-container" onClick={()=>handleDelete(cartdata.cart_id)}>Delete</button>
+          <button className="remove-container" onClick={()=>handleDelete(cartdata.cart_id)}><AiFillDelete size={18} /> Delete</button>
           <div className="update-container">
-            <button className="btn" onClick={()=>handleUpdate(cartdata.cart_id,cartdata.quantity-1)}>-</button>
+            <button className="btn" onClick={()=>handleUpdate(cartdata.cart_id,cartdata.quantity-1)}><FaMinus/></button>
             <span className="cart-qauntity">{cartdata.quantity}</span>
-            <button className="btn" onClick={()=>handleUpdate(cartdata.cart_id,(cartdata.quantity+1))}>+</button>
+            <button className="btn" onClick={()=>handleUpdate(cartdata.cart_id,(cartdata.quantity+1))}><FaPlus/></button>
           </div>
-        </div>
-        <div className="item-divider">
-
         </div>
         </div>
   </>

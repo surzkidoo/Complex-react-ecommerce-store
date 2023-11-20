@@ -1,6 +1,7 @@
 import React, { useContext, useState, useRef } from "react";
 import Card from "./Card";
 import { ProductContext } from "../productprovider";
+import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
 
 const CardList = (props) => {
   const { products, title, url, color } = props.data;
@@ -15,10 +16,10 @@ const CardList = (props) => {
   return (
     <div className="display-container">
       <div className="nvg-left-product" onClick={handleleft}>
-        {"<"}
+       <AiOutlineArrowLeft/>
       </div>
       <div className="nvg-right-product" onClick={handleright}>
-        {">"}
+      <AiOutlineArrowRight/>
       </div>
       <div
         className="display-title-container"
@@ -39,6 +40,7 @@ const CardList = (props) => {
               key={prod._id}
               prod={prod}
               index={index}
+              showMore
             />
           );
         })}

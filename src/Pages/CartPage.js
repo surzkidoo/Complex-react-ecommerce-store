@@ -4,6 +4,9 @@ import CartItem from "../Components/CartItem";
 import { ProductContext } from "../productprovider";
 import { FindOneAny } from "../_services/productHelper";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { AiOutlineEnter } from "react-icons/ai";
+import { BsDoorOpen } from "react-icons/bs";
+import { FaNairaSign } from "react-icons/fa6";
 export default function () {
   const { cart, setCart, product,updateCart,total,setTotal } = useContext(ProductContext);
   const history = useHistory()
@@ -48,7 +51,7 @@ export default function () {
         <div className="summary-header">Order Summary</div>
         <div className="summary-label-price">
           <div className="summary-label">Subtotal</div>
-          <div className="summary-price">₦{total.toLocaleString()}</div>
+          <div className="summary-price"><FaNairaSign/>{total.toLocaleString()}</div>
         </div>
         <div className="summary-text">
           This is a summary it doesn't include shipping Fee

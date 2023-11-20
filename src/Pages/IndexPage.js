@@ -30,7 +30,7 @@ const IndexPage = () => {
           <MainAdSection/>
           {/* <SideAdSection/> */}
     </div>
-      <BrandList/>
+      {/* <BrandList/> */}
       <TodaysDeal/>
     
       <InAdSection/>

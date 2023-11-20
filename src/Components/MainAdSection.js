@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../productprovider";
+import {BsChevronBarLeft ,BsChevronLeft,BsChevronRight } from 'react-icons/bs'
 
 const Mainsection = () => {
   const { ad } = useContext(ProductContext);
@@ -41,10 +42,10 @@ const Mainsection = () => {
       <img src={ad.mainAd[index]} className="main-ad-image" alt="" />
 
       <div className="nvg-left ad-carosel-btn" onClick={() => left()}>
-        {"<"}
+        <BsChevronLeft size={18}/>
       </div>
       <div className="nvg-right ad-carosel-btn" onClick={() => right()}>
-        {">"}
+      <BsChevronRight size={18}/>
       </div>
       <div className="indicator-container">
         {

@@ -2,6 +2,9 @@ import React, { useState,useContext } from "react";
 import { ProductContext } from "../productprovider";
 import { AuthContext } from "../Context/AuthContext";
 import { useHistory } from "react-router-dom";
+import { FaDiagramNext, FaNairaSign } from "react-icons/fa6";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { BsCheck, BsX } from "react-icons/bs";
 
 let Duser = {
   firstname: {
@@ -360,8 +363,7 @@ const CheckoutPage = () => {
                    
                     <select name="country" className="checkout-selector"
                     onChange={handleFormInput}>
-                      <option>Country</option>
-                      <option value='nigeria'>Nigeria</option>
+                      <option value='nigeria' selected>Nigeria</option>
 
                     </select>
                   </div>
@@ -373,8 +375,7 @@ const CheckoutPage = () => {
                     
                     <select name="city" className="checkout-selector"
                     onChange={handleFormInput}>
-                      <option>City</option>
-                      <option value='sokoto'>Sokoto</option>
+                      <option value='sokoto' selected>Sokoto</option>
                     </select>
                   </div>
                   <div className="form-billing-group">
@@ -507,6 +508,7 @@ const CheckoutPage = () => {
           {!tab ? (
             <button className="next-checkout-btn" onClick={handleNext}>
               Next
+              <AiOutlineArrowRight size={18}/>
             </button>
           ) : (
             <div className="group-row">
@@ -514,9 +516,11 @@ const CheckoutPage = () => {
                 className="next-checkout-btn"
                 onClick={() => settab(false)}
               >
+                <AiOutlineArrowLeft size={18}/>
                 Back
               </button>
               <button className="next-checkout-btn" onClick={handleSubmit}>
+                <BsCheck size={18}/>
                 Confirm Payment
               </button>
             </div>
@@ -526,22 +530,22 @@ const CheckoutPage = () => {
           <h4 className="summary-header">Order Summary</h4>
           <div className="summary-label-price">
           <div className="summary-label">Subtotal</div>
-          <div className="summary-price">₦{total.toLocaleString()}</div>
+          <div className="summary-price"><FaNairaSign/>{total.toLocaleString()}</div>
         </div>
           <div className="data-value-container">
             <div className="summary-label">Shipping Fee</div>
-            <div className="order-value">$1,500</div>
+            <div className="order-value"><FaNairaSign/>1,500</div>
           </div>
 
           <div className="data-value-container">
             <div className="summary-label">Tax Fee</div>
-            <div className="order-value">$100</div>
+            <div className="order-value"><FaNairaSign/>100</div>
           </div>
 
           <div className="hr"></div>
           <div className="data-value-container">
             <div className="summary-label">Total</div>
-            <div className="summary-price">${(total+1500+100).toLocaleString()}</div>
+            <div className="summary-price"><FaNairaSign/>{(total+1500+100).toLocaleString()}</div>
           </div>
         </div>
       </div>

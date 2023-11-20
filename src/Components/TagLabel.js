@@ -1,5 +1,6 @@
 import React from "react";
-
+import { BiArrowFromRight, BiArrowToRight } from "react-icons/bi";
+import { BsArrowRight } from "react-icons/bs";
 export default function TagLabel(props) {
   let {tags , selected}  = props;
   
@@ -8,7 +9,7 @@ export default function TagLabel(props) {
       {tags.map((tag,index) => {
         return (
           <>
-            <div>{tag}</div> {index!==tags.length-1 && <span> {">"}</span>}
+            <div key={index}>{tag}</div> {index!==tags.length-1 && <span>  <BsArrowRight/></span>}
           </>
         );
       })}

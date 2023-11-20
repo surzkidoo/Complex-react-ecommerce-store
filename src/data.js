@@ -1,3 +1,9 @@
+import React from'react'
+import { AiOutlineMonitor } from 'react-icons/ai';
+import { BiChair, BiMobile, BiSolidTShirt } from 'react-icons/bi';
+import { BsLaptop } from 'react-icons/bs';
+import { FaBowlRice, FaChair, FaMobile, FaShirt, FaShirtsinbulk, FaSpoon } from "react-icons/fa6";
+
 export const ads = {
   mainAd: ["ad2.jpeg", "ad1.jpeg", "ad3.jpg"],
   sideTop: ["ad1.jpeg"],
@@ -208,6 +214,7 @@ export const categories = [
     category_id: 1,
     category_name: "Clothings",
     category_image: "product-1.jpg",
+    icon: <FaShirtsinbulk size={20}/>,
     subcategory: [
       {
         category_id: 2,
@@ -275,6 +282,7 @@ export const categories = [
   {
     category_id: 8,
     category_name: "Electronics",
+    icon: <BsLaptop size={18}/>,
     category_image: "product-1.jpg",
     subcategory: [],
     brands:['LG','Samsung',],
@@ -293,6 +301,7 @@ export const categories = [
   {
     category_id: 9,
     category_name: "Furniture",
+    icon: <BiChair size={20}/>,
     category_image: "product-1.jpg",
     subcategory: [],
   },
@@ -300,6 +309,7 @@ export const categories = [
   {
     category_id: 10,
     category_name: "Mobile phone",
+    icon: <BiMobile size={18}/>,
     category_image: "product-1.jpg",
     subcategory: [],
   },
@@ -307,6 +317,7 @@ export const categories = [
   {
     category_id: 18,
     category_name: "Food & nutritions",
+    icon: <FaBowlRice size={18}/>,
     category_image: "product-1.jpg",
     subcategory: [],
   },

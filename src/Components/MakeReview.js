@@ -1,6 +1,7 @@
 import React, { useState,useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { ProductContext } from "../productprovider";
+import { AiFillCloseSquare } from "react-icons/ai";
 
 export default function MakeReview(props) {
   const { loggedUser, isAuth} = useContext(AuthContext);
@@ -98,7 +99,7 @@ export default function MakeReview(props) {
           <div className="make-review-header">
             <div className="model-review-title">Review Form</div>
             <div className="cancel-x" onClick={() => props.close(false)}>
-              x
+              <AiFillCloseSquare/>
             </div>
           </div>
           <div className="review-input">

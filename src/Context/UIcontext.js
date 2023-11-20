@@ -10,7 +10,13 @@ export const Contextuiprovider = (props) => {
   const [checkoutsec, setCheckoutSec] = useState(false);
   const [headerShow, setHeaderShow] = useState(true);
   const [footerShow, setFooterShow] = useState(true);
+  const [categoryMenu, setCategoryMenu] = useState(false);
+ let alertcomponents = []
+  // const [alertcomponents,setAlertComponents] = useState([])
 
+  let setAlertComponents = (newd)=>{
+    return [...alertcomponents,newd]
+  }
   return (
     <UIcontext.Provider
       value={{
@@ -29,7 +35,11 @@ export const Contextuiprovider = (props) => {
         headerShow,
         setHeaderShow,
         footerShow,
-        setFooterShow
+        setFooterShow,
+        categoryMenu,
+        setCategoryMenu,
+        alertcomponents,
+        setAlertComponents
       }}
     >
       {props.children}

@@ -14,6 +14,7 @@ export default function TodaysDeal() {
         products: product,
       }}
       showBtn
+      showMore
     />
     </>
   );

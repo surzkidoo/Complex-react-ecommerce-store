@@ -4,6 +4,10 @@ import MakeReview from "./MakeReview";
 import { ProductContext } from "../productprovider";
 import Loader from "./loader";
 
+import { BsStar, BsStarFill } from "react-icons/bs";
+import { FaMaximize, FaMinimize, FaMinus, FaNairaSign, FaPlus } from "react-icons/fa6";
+import { BiCheckCircle, BiListCheck } from "react-icons/bi";
+
 export default function ProductDetailed({product, setquantity, quantity,setIsAddedToCart,isAddedToCart}) {
   const [desc, setdesc] = useState(true)
   const [spec, setspec] = useState(true)
@@ -15,19 +19,20 @@ export default function ProductDetailed({product, setquantity, quantity,setIsAdd
   const [specdata,setSpecdata] = useState([])
   useEffect(() => {
     Object.keys(product.product_spec).forEach(element => {
-        setSpecdata((prev)=>[...prev,<li> {element} {product.product_spec[element]}</li>])
+        setSpecdata((prev)=>[...prev,<li>          <BiCheckCircle size={18} color="darkgreen"/>
+        {element} {product.product_spec[element]}</li>])
     })
   },[])
 
-  const rating = ( )=>{
-      let num = product.product_rating;
+  const rating = ( num)=>{
+
       let ratingjsx = []
       for (let index = 0; index <= 4; index++) {
         if(num>=index+1){
-          ratingjsx =[...ratingjsx,"hi"]         
+          ratingjsx =[...ratingjsx,<BsStarFill color="yellow"/>]         
         }
         else {
-          ratingjsx = [...ratingjsx,  <div>x</div>]
+          ratingjsx = [...ratingjsx, <BsStar/>]
         }
       }
       return ratingjsx
@@ -58,7 +63,7 @@ export default function ProductDetailed({product, setquantity, quantity,setIsAdd
       </h1>
       <div className="review-container">
         <div className="rating-container">
-        {rating()}
+        {rating(product.product_rating)}
         </div>
         <div className="rating-number">12,000 Ratings</div> <span>|</span>
         <div className="review-number">1,200 Reviews</div>
@@ -67,11 +72,11 @@ export default function ProductDetailed({product, setquantity, quantity,setIsAdd
         <div className="price-label">Price</div>
         <div className="product-detailed-prices">
           <div className="product-detailed-price">
-            <span className="naira-sign">₦</span>
+            <span className="naira-sign"><FaNairaSign/></span>
             {product.product_price.toLocaleString()}
           </div>
           <div className="product-detailed-discount">
-            <span className="naira-sign">₦</span> {product?.product_discount_price.toLocaleString()}
+            <span className="naira-sign"><FaNairaSign/></span> {product?.product_discount_price.toLocaleString()}
           </div>
           <div className="product-detailed-off">{product?.product_discount}% OFF</div>
         </div>
@@ -102,9 +107,9 @@ export default function ProductDetailed({product, setquantity, quantity,setIsAdd
        <div className="q-container">
         <div className="qauntity-left" style={{color:'red'}}>{product?.product_quantity} Item Left!</div>
         <div className="update-container">
-          <button className="btn" onClick={handleMinus}>-</button>
+          <button className="btn" onClick={handleMinus}><FaMinus/></button>
           <span className="cart-qauntity">{quantity}</span>
-          <button className="btn" onClick={handleAdd}>+</button>
+          <button className="btn" onClick={handleAdd}><FaPlus/></button>
         </div>
         </div>
       </div>
@@ -112,7 +117,7 @@ export default function ProductDetailed({product, setquantity, quantity,setIsAdd
       <div className="product-desc-container">
         <div className="product-desc-header-container">
           <h4 className="product-desc-header">Product detail</h4>
-          <div className="toggle-icon" onClick={()=>setdesc(!desc)}>-</div>
+          <div className="toggle-icon" onClick={()=>setdesc(!desc)}>{desc ? <FaMinimize className="icon-color" size={18}/>: <FaMaximize className="icon-color" size={18}/>}</div>
         </div>
         {
           desc && <div className="product-desc-content">
@@ -126,7 +131,7 @@ export default function ProductDetailed({product, setquantity, quantity,setIsAdd
       <div className="product-desc-container">
         <div className="product-desc-header-container">
           <h4 className="product-desc-header">Specification</h4>
-          <div className="toggle-icon" onClick={()=>setspec(!spec)}>-</div>
+          <div className="toggle-icon" onClick={()=>setspec(!spec)}>{spec ? <FaMinimize className="icon-color" size={18}/>: <FaMaximize className="icon-color" size={18}/>}</div>
         </div>
         { spec && 
          <div className="product-desc-content">
@@ -141,12 +146,12 @@ export default function ProductDetailed({product, setquantity, quantity,setIsAdd
       <div className="product-desc-container">
         <div className="product-desc-header-container">
           <h4 className="product-desc-header">Review & Rating</h4>
-          <div className="toggle-icon" onClick={()=>setreview(!review)}>-</div>
+          <div className="toggle-icon" onClick={()=>setreview(!review)}>{review ? <FaMinimize className="icon-color" size={18}/>: <FaMaximize className="icon-color" size={18}/>}</div>
         </div>
         { review &&
         <div className="product-desc-content make-relative">
           <div className="add-review-container" >
-            <div className="review-section-number">{product?.product_review.length} Reviews</div>
+            <div className="review-section-number">Reviews {product?.product_review.length} </div>
             <button className="add-review" onClick={()=>handlereviewForm(true)}>Leave review</button>
           </div>
           <div className="reviews-container">
@@ -167,11 +172,9 @@ export default function ProductDetailed({product, setquantity, quantity,setIsAdd
                 <div className="review-name">{item.user.fullname}</div>
                 <div className="review-rating">
                   <div className="rating-container">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                 {
+                  rating(item.rate)
+                 }
                   </div>
                 </div>
                 </div>

@@ -1,6 +1,8 @@
 import React,{useState} from "react";
 import Result from "./ResultList"
 import Card from "./Card";
+import { FaSort } from "react-icons/fa6";
+import { BsSortUp } from "react-icons/bs";
 
 const CategorySection = (props) => {
 
@@ -16,7 +18,7 @@ const CategorySection = (props) => {
           </div>
           <div className="filter-header-sort">
             <div>
-             SORT BY
+             <BsSortUp/> SORT BY
             </div>
             <select name="" onChange={handleSort}>
             <option value="A-Z">A-Z</option>

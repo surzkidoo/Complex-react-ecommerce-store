@@ -19,6 +19,8 @@ import Model from './Components/model';
 import OrderPage from './Pages/OrderPage';
 import WishlistPage from './Pages/WishlistPage';
 import Loader from './Components/loader';
+import { Alert } from './Components/Alert';
+import AlertContainer from './Components/AlertContainer';
 
   
 const App = ()=>{
@@ -32,7 +34,7 @@ const App = ()=>{
          <Router>
                {/* <Model/>  */}
                <Header/>
-             
+               <AlertContainer/>
             <Switch>
             <Route path="/" exact component={IndexPage} />
             <Route path="/cart" exact component={CartPage} />
